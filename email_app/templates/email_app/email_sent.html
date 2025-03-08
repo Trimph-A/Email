@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Email Sent</title>
+    <link rel="stylesheet" href="{% static 'email_app/css/style.css' %}">
+</head>
+
+<body>
+    <div class="email-form-container">
+        <h1 class="form-title">EMAIL SENT!</h1>
+        <p class="info-text">
+            Your email was sent to
+            <strong>{{ receiver }}</strong>
+            with the subject
+            <em>"{{ subject }}"</em>.
+        </p>
+        <a href="{% url 'send_dynamic_email' %}" class="form-button-link">
+            <button class="form-button">SEND ANOTHER</button>
+        </a>
+    </div>
+</body>
+
+</html>

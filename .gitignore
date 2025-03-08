@@ -1,0 +1,14 @@
+# Byte-compiled / optimized files
+*.pyc
+__pycache__/
+
+# Environment files
+.env
+
+# Virtual Environment
+venv/
+env/
+
+# Django stuff
+db.sqlite3
+/staticfiles/

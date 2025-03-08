@@ -1,0 +1,118 @@
+# Django Dynamic SMTP Email Project
+
+A Django application that enables users to dynamically input SMTP credentials at runtime and send customizable emails through a modern user interface.
+
+![Demo](https://via.placeholder.com/800x400.png?text=Email+Form+Demo) <!-- Add actual screenshot path -->
+
+## Table of Contents
+
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Setup & Installation](#setup--installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Security Considerations](#security-considerations)
+- [Pros & Cons of Dynamic Credentials](#pros--cons-of-dynamic-credentials)
+- [Customization](#customization)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **Dynamic SMTP Credentials**: Users input SMTP credentials (email + password) at runtime.
+- **Modern UI**: Card-based design with responsive CSS styling.
+- **Toggle Password Visibility**: "Show Password" checkbox to reveal/hide credentials.
+- **Customizable Email Fields**:
+  - Editable Sender’s Email
+  - Receiver’s Email
+  - Reply-To Address
+  - Email Subject
+  - HTML/Plain Text Message Body
+- **Template-Driven**: Uses Django templates for the email form and success page.
+
+## Project Structure
+
+```bash
+
+bash
+Copy
+git clone https://github.com/Trimph-A/Email.git
+Create Virtual Environment:
+
+bash
+Copy
+python -m venv venv
+source venv/bin/activate  # Linux/MacOS
+venv\Scripts\activate     # Windows
+Install Dependencies:
+
+bash
+Copy
+pip install -r requirements.txt
+Configuration
+Create a .env file in the project root:
+
+bash
+Copy
+SECRET_KEY="your-secret-key" // you can get this from the Django setting files, in the config I mean
+DEBUG=True
+EMAIL_HOST="smtp.gmail.com"  # Default SMTP server
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+Apply migrations:
+
+bash
+Copy
+python manage.py migrate
+Usage
+Start the development server:
+
+bash
+Copy
+python manage.py runserver
+Access the email form at:
+
+Copy
+http://127.0.0.1:8000/send-email/
+Fill in SMTP credentials and email details:
+
+Toggle "Show Password" to verify credentials
+
+Customize all email fields (sender, reply-to, subject, etc.)
+
+Submit the form to send the email.
+
+Security Considerations
+🔒 Never store plaintext passwords - Use Django's security middleware and HTTPS in production.
+
+⚠️ Validate user inputs - Sanitize email fields to prevent injection attacks.
+
+🔑 Limit credential usage - SMTP credentials are used only for the current session.
+
+🔄 Session expiration - Implement short-lived sessions for sensitive operations.
+
+Pros & Cons of Dynamic Credentials
+Pros	Cons
+No hardcoded credentials	User must trust application with SMTP
+Flexible for multi-user setups	Potential misuse of SMTP server
+Easy credential rotation	Requires strict security measures
+Customization
+UI: Modify styles.css in core/static/ for custom styling.
+
+Templates: Edit HTML files in core/templates/.
+
+Email Backend: Override EmailMessage class in views.py for advanced features.
+
+Contributing
+Fork the repository
+
+Create a feature branch (git checkout -b feature/your-feature)
+
+Commit changes (git commit -m 'Add some feature')
+
+Push to the branch (git push origin feature/your-feature)
+
+Open a Pull Request
+
+License
+Distributed under the MIT License. See LICENSE for details.

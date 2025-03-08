@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Send Custom Email</title>
+    <!-- Link to the separate CSS file -->
+    <link rel="stylesheet" href="{% static 'email_app/css/style.css' %}">
+</head>
+
+<body>
+    <div class="email-form-container">
+        <h1 class="form-title">EMAIL FORM</h1>
+        <form method="POST" class="email-form">
+            {% csrf_token %}
+
+            <!-- 1. SMTP User Field -->
+            <p>
+                {{ form.smtp_user.label_tag }}
+                {{ form.smtp_user }}
+            </p>
+
+            <!-- 2. SMTP Password Field + "Show Password" checkbox -->
+            <p>
+                {{ form.smtp_password.label_tag }}
+                {{ form.smtp_password }}
+                <br>
+                <input type="checkbox" id="showPassword" onclick="togglePassword()" />
+                <label for="showPassword">Show Password</label>
+            </p>
+
+            <!-- 3. Other Fields (Sender Email, Receiver Email, etc.) -->
+            
+            <p>
+                {{ form.receiver_email.label_tag }}
+                {{ form.receiver_email }}
+            </p>
+            <p>
+                {{ form.reply_to_email.label_tag }}
+                {{ form.reply_to_email }}
+            </p>
+            <p>
+                {{ form.email_title.label_tag }}
+                {{ form.email_title }}
+            </p>
+            <p>
+                {{ form.email_message.label_tag }}
+                {{ form.email_message }}
+            </p>
+
+            <!-- Submit Button -->
+            <button type="submit" class="form-button">SEND</button>
+        </form>
+    </div>
+
+    <!-- JavaScript for toggling password visibility -->
+    <script>
+        function togglePassword() {
+            const passField = document.getElementById('id_smtp_password');
+            if (passField.type === 'password') {
+                passField.type = 'text';
+            } else {
+                passField.type = 'password';
+            }
+        }
+    </script>
+</body>
+
+</html>
