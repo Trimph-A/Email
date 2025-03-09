@@ -5,7 +5,132 @@
 <head>
     <meta charset="UTF-8">
     <title>Email Sent</title>
-    <link rel="stylesheet" href="{% static 'email_app/css/style.css' %}">
+    <!-- Inline (internal) CSS -->
+    <style>
+        /* Import a clean, minimal Google Font (optional) */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            /* Light grey background */
+            color: #333;
+            /* Dark grey text */
+        }
+
+        /* Container for the form/sent message card */
+        .email-form-container {
+            max-width: 500px;
+            margin: 60px auto;
+            /* Centers and adds top/bottom spacing */
+            padding: 30px;
+            background-color: #fff;
+            /* White card background */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            /* Subtle shadow */
+        }
+
+        .form-title {
+            font-size: 26px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            /* A deeper, more refined shade */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #6c63ff;
+            padding-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* The form itself */
+        .email-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Paragraphs that wrap Django form fields if using form.as_p */
+        .email-form p {
+            margin-bottom: 18px;
+        }
+
+        /* Labels, if you manually render them */
+        .email-form label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        /* Inputs (text, email, password) and textarea fields */
+        .email-form input[type="text"],
+        .email-form input[type="email"],
+        .email-form input[type="password"],
+        .email-form textarea {
+            width: 100%;
+            font-size: 14px;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .email-form input[type="text"]:focus,
+        .email-form input[type="email"]:focus,
+        .email-form input[type="password"]:focus,
+        .email-form textarea:focus {
+            border-color: #6c63ff;
+            border-radius: 25px;
+            /* Accent color on focus */
+        }
+
+        /* Button style */
+        .form-button {
+            background-color: #6c63ff;
+            /* Purple accent */
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            align-self: center;
+            /* Center the button horizontally */
+            margin-top: 10px;
+        }
+
+        .form-button:hover {
+            background-color: #5a54d1;
+        }
+
+        .form-button:focus {
+            outline: none;
+            background-color: #534bb9;
+            /* Slightly darker on focus */
+        }
+
+        /* For the "Email Sent" text or any info text */
+        .info-text {
+            font-size: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* If you use <a> tags as buttons, remove text underline, etc. */
+        .form-button-link {
+            text-decoration: none;
+            align-self: center;
+        }
+    </style>
 </head>
 
 <body>
